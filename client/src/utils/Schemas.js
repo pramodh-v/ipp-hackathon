@@ -37,7 +37,7 @@ export const loginSchema = yup.object().shape({
     ),
 });
 
-export  const postSchema = yup.object().shape({
+export const postSchema = yup.object().shape({
   caption: yup.string()
       .required('Caption is required')
       .trim()
@@ -51,4 +51,25 @@ export  const postSchema = yup.object().shape({
   .array()
   .of(yup.mixed())
   .max(5, 'Not more than 5 images are accepted'),
+});
+
+export const groupSchema = yup.object().shape({
+  groupName: yup.string()
+  .required('Group name is required')
+  .trim()
+  .max(50, 'Group name must be less than 50 characters')
+  .min(1, 'Group name must be at least 1 character')
+  .matches(
+    /^[a-zA-Z0-9!\(\)\-\.\?\[\]\_\`\~\;\:\!\@\#\$\%\^\&\*\+\= ',"]+$/,
+      'Group name can only contain letters, numbers, spaces, and the following special characters: !()-.[]_`~;:!@#$%^&*+='
+  ),
+  groupDescription: yup.string()
+  .required('Group description is required')
+  .trim()
+  .max(250, 'Group description must be less than 250 characters')
+  .min(1, 'Group description must be at least 1 character')
+  .matches(
+    /^[a-zA-Z0-9!\(\)\-\.\?\[\]\_\`\~\;\:\!\@\#\$\%\^\&\*\+\= ',"]+$/,
+      'Group description can only contain letters, numbers, spaces, and the following special characters: !()-.[]_`~;:!@#$%^&*+='
+  ),
 });

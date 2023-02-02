@@ -36,7 +36,7 @@ const HomePage = () => {
           </Box>
           {isNonMobileScreens && (
             <Box flexBasis="26%">
-              <AdWidget/>
+              {/* <AdWidget/> */}
               <Box m="2rem 0"/>   
               <FollowingListWidget username={username}/>
             </Box>

@@ -70,7 +70,7 @@ const Navbar = () => {
             },
           }}
         >
-          Chatter
+          Connect
         </Typography>
         {isNonMobileScreens && (
           <SearchBar/>

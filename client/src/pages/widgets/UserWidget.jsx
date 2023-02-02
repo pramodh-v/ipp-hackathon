@@ -8,7 +8,7 @@ import {
 } from '@mui/icons-material';
 
 import { Box, Typography, Divider, useTheme} from "@mui/material";
-
+import MyPostWidget from '../widgets/MyPostWidget';
 import io from 'socket.io-client'
 
 //Custom components
@@ -23,6 +23,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { setFollowers, setPerson, setPersonFollowers } from '../../state';
+import CreateGroupWidget from './CreateGroupWidget';
 
 const UserWidget = ({ username, profilePhotoUrl}) => {
 
@@ -202,43 +203,9 @@ const UserWidget = ({ username, profilePhotoUrl}) => {
                        <Typography color={main} fontWeight="500">{impressions}</Typography>
                    </FlexBetween>
                </Box>
-
-               <Box p="1rem 0">
-                  <Typography color={main} marginBottom="0.7rem" fontWeight="500">Social Media Profiles</Typography>
-
-                   <FlexBetween gap="1rem" mb="0.5rem">
-                       <FlexBetween gap="1rem">
-                       <Twitter/>
-                           <Box>
-                               <Typography color={main} fontWeight="500">
-                                   Twitter
-                               </Typography>
-                               <Typography color={medium}>
-                                   Social Media
-                               </Typography>
-                           </Box>
-                       </FlexBetween>
-                       <EditOutlined sx={{ color: main}}/>
-                   </FlexBetween>
-
-                   <FlexBetween gap="1rem">
-                       <FlexBetween gap="1rem">
-                           <LinkedIn/>
-                           <Box>
-                               <Typography color={main} fontWeight="500">
-                                   Linkedin
-                               </Typography>
-                               <Typography color={medium}>
-                                   Network
-                               </Typography>
-                           </Box>
-                       </FlexBetween>
-                       <EditOutlined sx={{ color: main}}/>
-                   </FlexBetween>
-
-
-               </Box>
-
+               {user && occupation.toLowerCase() === 'village head' ?
+               <CreateGroupWidget/>
+               : null}
         </WidgetWrapper>
       )
 

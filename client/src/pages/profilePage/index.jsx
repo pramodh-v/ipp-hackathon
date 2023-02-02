@@ -58,6 +58,7 @@ const getUser = async () => {
       
         setIsSignedInUserprofile(userData.username === signedInUsername)
         setUser(userData);
+        console.log(userData);
       } else{
         navigate('/')
       }
