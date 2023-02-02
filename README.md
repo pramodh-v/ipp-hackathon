@@ -1,6 +1,6 @@
-<h1 align="center">CHATTER</h1>
+<h1 align="center">connect</h1>
 <div align="center">
-Welcome to Chatter, a social media application that allows users to connect and interact with each other in real-time. 
+Welcome to connect, a social media application that allows users to connect and interact with each other in real-time. 
 
 </div> <br>
 
@@ -44,8 +44,8 @@ If you feel awesome and want to support us in a small way, please consider check
 - [Questions](#questions)
 
 ## Introduction
-  Chatter is a social media application that allows users to interact with one another by posting, commenting, and liking posts. The application was created by Femi-Ladiran Erifeoluwa (also known as Timi) and Oghenebrume Akpadaka (also known as Brume).
-  Our goal with Chatter is to provide a platform for users to connect with one another and share their thoughts, ideas, and experiences. The user-friendly interface and sleek design make it easy for users to navigate and engage with the community.
+  connect is a social media application that allows users to interact with one another by posting, commenting, and liking posts. The application was created by Femi-Ladiran Erifeoluwa (also known as Timi) and Oghenebrume Akpadaka (also known as Brume).
+  Our goal with connect is to provide a platform for users to connect with one another and share their thoughts, ideas, and experiences. The user-friendly interface and sleek design make it easy for users to navigate and engage with the community.
 
 ## Installation
   To setup and use this project on your device, 
@@ -57,9 +57,9 @@ If you feel awesome and want to support us in a small way, please consider check
   
   4. Open your code editor by running the command `code .`
   
-  5. Create a [cloudinary](https://cloudinary.com/) account. your `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_KEY` & `CLOUDINARY_SECRET` for your .env would be generated there. Then create a folder called `chatter` on the cloudinary website to store all project images from chatter.
+  5. Create a [cloudinary](https://cloudinary.com/) account. your `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_KEY` & `CLOUDINARY_SECRET` for your .env would be generated there. Then create a folder called `connect` on the cloudinary website to store all project images from connect.
   
-  6. create a `.env` file in the server folder for your environment variables. Follow the [sample](https://github.com/FOR-TIMI/chatter/blob/main/server/.env.sample) file. If you used MongoDB atlas, set `MONGODB_URI` to the url generated from Mongo Atlas that looks like `mongodb+srv://[username:password@]host[/[database][?options]]
+  6. create a `.env` file in the server folder for your environment variables. Follow the [sample](https://github.com/FOR-TIMI/connect/blob/main/server/.env.sample) file. If you used MongoDB atlas, set `MONGODB_URI` to the url generated from Mongo Atlas that looks like `mongodb+srv://[username:password@]host[/[database][?options]]
 `. <br><br>
  Note: The parts in square brackets are optional. The username and password are used for authentication, the host is the domain name of the Atlas cluster, and the database is the name of the database to connect to. The options are additional options to configure the connection.
  7. (optional) To have some seed data, you can run `npm run seed` in the terminal.
@@ -74,11 +74,11 @@ If you feel awesome and want to support us in a small way, please consider check
   I also want to have access to a wide range of features and tools that will help me connect and engage with other users more effectively.
 
 ## Technologies Used
-- MongoDB: A powerful and flexible NoSQL database that allows Chatter to store and retrieve data efficiently and quickly.
-- Mongoose ODM: A powerful Object Data Modeling (ODM) library that simplifies interactions between MongoDB and the Chatter application.
-- Express: A lightweight framework for building web applications and APIs that allows Chatter to handle HTTP requests and responses.
-- Node: A powerful runtime environment that allows Chatter to run JavaScript code on the server-side.
-- React: A powerful JavaScript library for building user interfaces that allows Chatter to provide a dynamic and responsive user experience.
+- MongoDB: A powerful and flexible NoSQL database that allows connect to store and retrieve data efficiently and quickly.
+- Mongoose ODM: A powerful Object Data Modeling (ODM) library that simplifies interactions between MongoDB and the connect application.
+- Express: A lightweight framework for building web applications and APIs that allows connect to handle HTTP requests and responses.
+- Node: A powerful runtime environment that allows connect to run JavaScript code on the server-side.
+- React: A powerful JavaScript library for building user interfaces that allows connect to provide a dynamic and responsive user experience.
 - Material-UI: A popular UI library that provides a wide range of Material Design components for building beautiful and responsive user interfaces.
 
 ## Features
@@ -89,13 +89,13 @@ If you feel awesome and want to support us in a small way, please consider check
 
    
 ## Security Measures
-Chatter has implemented a number of security measures to ensure that users' data is kept safe and secure. These measures include:
- - CORS (Cross-Origin Resource Sharing): A security mechanism that allows Chatter to restrict access to its APIs based on the origin of the request.
+connect has implemented a number of security measures to ensure that users' data is kept safe and secure. These measures include:
+ - CORS (Cross-Origin Resource Sharing): A security mechanism that allows connect to restrict access to its APIs based on the origin of the request.
  - Helmet: A library that sets various HTTP headers to help protect against common security threats.
 
 
 ## Deployment
-Chatter is currently deployed on Heroku and can be accessed at the deployed link: <br> https://nameless-basin-36851.herokuapp.com/
+connect is currently deployed on Heroku and can be accessed at the deployed link: <br> https://nameless-basin-36851.herokuapp.com/
 
 ## Screenshots
   - ### Login Page: 

@@ -154,7 +154,7 @@ const serverUrl = 'http://localhost:3001/'
           cursor: "pointer",
         },
       }}>
-        Chatter
+        connect
       </Typography>
 
       {loginError && <Typography fontWeight="bold" sx={{
