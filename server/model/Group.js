@@ -45,8 +45,8 @@ const groupSchema = new Schema({
         required: 'Admin is required',
         trim: true,
         match: [
-            /^[a-zA-Z0-9,\- ]+$/,
-            'Admin can only contain letters, numbers, commas, spaces and -'
+            /^[a-zA-Z0-9,\-,_,. ]+$/,
+            'Admin can only contain letters, numbers, commas, spaces,-,. and _'
         ]
     }
 });

@@ -25,11 +25,12 @@ import {
 import FlexBetween from '../../components/CustomStyledComponents/FlexBetween';
 import Dropzone from 'react-dropzone'
 import UserAvatar from '../../components/CustomStyledComponents/UserAvatar';
-import { setPosts } from "../../state" 
+import { setGroups } from "../../state" 
 import { useDispatch, useSelector } from 'react-redux';
 import WidgetWrapper from '../../components/CustomStyledComponents/WidgetWrapper';
 
 import { groupSchema } from '../../utils/Schemas';
+import axios from 'axios';
 
 const CreateGroupWidget = () => {
     const dispatch = useDispatch()
@@ -47,55 +48,50 @@ const CreateGroupWidget = () => {
 
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
-    const { mediumMain, medium} = palette.neutral;
-
-    const handleDrop = (acceptedFiles) => {
-        acceptedFiles = acceptedFiles.slice(0,isNonMobileScreens ? 5 : 4)
-
-        setImageUrls(acceptedFiles.map(file => Object.assign(file, {
-          preview: URL.createObjectURL(file)
-        })));
-
-        setImage(acceptedFiles)
+    const handleCreate = async (e) => {  
+        const fd = {}
         
-    };
-   
-
-    const handlePost = async (e) => {
-
-      
         const formData = new FormData();
-        // formData.append("username", username);
-        formData.append("admin",username);
-        formData.append("groupname", groupname);
-        formData.append("groupdescription", groupdescription);
+        formData.append('groupname', groupname);
+        formData.append('groupdescription', groupdescription);
+        formData.append('admin', username);
+
+        fd.admin = username;
+        fd.groupname = groupname;
+        fd.groupdescription = groupdescription;
 
         // const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
         const serverUrl = 'http://localhost:3001/'
         
-        const response = await fetch( serverUrl + `g`,{
-          method: "POST",
-          headers: { Authorization: `Bearer ${token}`},
-          body:formData
+        axios.post(`${serverUrl}g`,{admin:username,groupname:groupname,groupdescription:groupdescription},{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((res) => {
+            dispatch(setGroups({ groups: res.data }))
+            console.log(res.data)
+        }).catch((err) => {
+            console.log(err)
         })
 
-        const posts = await response.json();
 
-        
         setLoading(false);  
 
-        dispatch(setPosts({ posts }));
-        setImage(null);
-        setPost("")
+        // dispatch(setGroups({ groups }));
+        setGroupname("")
+        setGroupdescription("")
+
     }
     
     const handleSubmit = async(e) => {
       e.preventDefault();
       try {
         setLoading(true)
-        await groupSchema.validate({ caption: post, images: imageUrls }, { abortEarly: false });
+        await groupSchema.validate({ groupName: groupname,groupDescription:groupdescription }, { abortEarly: false });
+        console.log("validated");
         setErrors({});
-        handlePost();
+        handleCreate();
         } catch (err) {
         const validationErrors = {};
         err.inner.forEach(error => {
@@ -109,21 +105,12 @@ const CreateGroupWidget = () => {
       setErrors({});
     }
 
-    const handleChange = async(e) => {
-      setPost(e.target.value)
-      if(post.length > 2){
-        try {
-          await groupSchema.validate({  }, { abortEarly: false });
-          setErrors({});
-          } catch (err) {
-          const validationErrors = {};
-          err.inner.forEach(error => {
-          validationErrors[error.path] = error.message;
-          });
-          setErrors(validationErrors);
-          }
-        return;
-      }
+    const handleChangeName = async(e) => {
+      setGroupname(e.target.value);
+    }
+    
+    const handleChangeDesc = async(e) => {
+        setGroupdescription(e.target.value);
     }
   
   return (
@@ -131,9 +118,9 @@ const CreateGroupWidget = () => {
       <FlexBetween gap="1.5rem">
         <InputBase 
           placeholder="Create a new Group"
-          onChange={handleChange}
+          onChange={handleChangeName}
           onBlur={handleBlur}
-          value={post}
+          value={groupname}
           sx={{
             width: "100%",
             backgroundColor: palette.neutral.light,
@@ -146,9 +133,9 @@ const CreateGroupWidget = () => {
       <FlexBetween gap="1.5rem">
         <InputBase 
           placeholder="Group Description"
-          onChange={handleChange}
+          onChange={handleChangeDesc}
           onBlur={handleBlur}
-          value={post}
+          value={groupdescription}
           sx={{
             width: "100%",
             backgroundColor: palette.neutral.light,
@@ -157,7 +144,18 @@ const CreateGroupWidget = () => {
           }}
         />
       </FlexBetween>
-        <Divider sx={{margin: "1.25rem 0"}} />
+        <br/>
+        <Button
+                disabled={loading}
+                onClick={handleSubmit}
+                sx={{
+                  color: palette.background.alt,
+                  backgroundColor: palette.primary.main,
+                  borderRadius: "3rem"
+                }}
+              >
+                {loading ? <CircularProgress sx={{ color: palette.neutral.dark}} size={15}/> : 'Create'}
+              </Button>
     </WidgetWrapper>
   )
 }

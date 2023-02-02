@@ -6,6 +6,7 @@ import MyPostWidget from '../widgets/MyPostWidget';
 import PostsWidget from '../widgets/PostsWidget';
 import FollowingListWidget from '../widgets/FollowingListWidget';
 import AdWidget from "../widgets/AdWidget";
+import { withTranslation } from 'react-i18next';
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -36,7 +37,6 @@ const HomePage = () => {
           </Box>
           {isNonMobileScreens && (
             <Box flexBasis="26%">
-              {/* <AdWidget/> */}
               <Box m="2rem 0"/>   
               <FollowingListWidget username={username}/>
             </Box>

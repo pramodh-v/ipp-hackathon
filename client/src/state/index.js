@@ -64,7 +64,9 @@ export const authSlice = createSlice({
                 });
                 state.posts = updatedPosts;
             },
-
+            setGroups: (state, action) => {
+                state.groups = action.payload.groups;
+            }
         }
 })
 
@@ -78,7 +80,8 @@ export const {
     setPost,
     setPerson,
     setPersonFollowers,
-    setPersonFollowing
+    setPersonFollowing,
+    setGroups
 } = authSlice.actions;
 
 export default authSlice.reducer
