@@ -47,16 +47,18 @@ const Form = () => {
   let isLogin = pageType === "login";
   let isRegister = pageType === "register";
 
-  const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
-
+  // const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
+const serverUrl = 'http://localhost:3001/'
 
 
   
   const register = async (values, onSubmitProps) => {
+    console.log(process.env.REACT_APP_ENV)
         const { username, email, location, occupation, password} = values;
         setLoading(true)
 
        try{
+        console.log(serverUrl)
         const newUserData = await fetch(
           serverUrl + 'register',
           {
@@ -70,7 +72,6 @@ const Form = () => {
             }),
             headers: { 'Content-Type': 'application/json' }
           });
-
         const isRegistered = await newUserData.json();
 
          if(isRegistered){

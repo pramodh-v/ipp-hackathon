@@ -91,6 +91,7 @@ const userSchema = new Schema({
 //middleware to create password
 userSchema.pre("save", async function(next){
     //check if the user is updating password or creating a new password
+    console.log(this.password);
     if(this.isNew || this.isModified("password")){
         try{
             const SALT_ROUND = 10;
@@ -98,6 +99,7 @@ userSchema.pre("save", async function(next){
             this.password = await bcrypt.hash(this.password, salt);
             return next();
         } catch(error){
+            console.log(error);
             return next(err);
         }
     }
@@ -107,6 +109,7 @@ userSchema.pre("save", async function(next){
 
 //compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function(password){
+    console.log(password, this.password);
     return bcrypt.compare(password, this.password);
 }
 

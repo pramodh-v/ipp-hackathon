@@ -30,7 +30,8 @@ import { setPost } from "../../state"
 
 const CommentBox = ({ postId, commentCount, isNonMobileScreens }) => {
 
- const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
+//  const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
+ const serverUrl = 'http://localhost:3001/'
  
  const [comments, setComments] = useState(null);
  const [commentBody, setCommentBody] = useState('');

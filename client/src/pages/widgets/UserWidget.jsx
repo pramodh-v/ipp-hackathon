@@ -44,8 +44,8 @@ const UserWidget = ({ username, profilePhotoUrl}) => {
     //colors
     const { dark, medium, main } = palette.neutral;
 
-    const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
-
+    // const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
+    const serverUrl = 'http://localhost:3001/'
 
  //Check if we're currently viewing the signedInuser's username
 

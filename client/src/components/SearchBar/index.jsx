@@ -26,8 +26,8 @@ const SearchBar = () => {
 
   const token = useSelector((state) => state.token);
 
-  const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
-
+  // const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
+  const serverUrl = 'http://localhost:3001/'
   
 
   const navigate = useNavigate(); 

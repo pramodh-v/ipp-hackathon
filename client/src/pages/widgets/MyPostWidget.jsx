@@ -66,8 +66,8 @@ const MyPostWidget = ({ profilePhotoUrl }) => {
         formData.append("username", username);
         formData.append('caption', post);
         
-        const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
-
+        // const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
+        const serverUrl = 'http://localhost:3001/'
 
    
 

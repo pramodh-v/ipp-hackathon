@@ -71,8 +71,8 @@ const SinglePostWidget = ({
   const { main, medium} = palette.neutral;
 
 
-  const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
-
+  // const serverUrl =  process.env.REACT_APP_ENV === "Development" ? "http://localhost:3001/" : process.env.REACT_APP_SERVER_URL 
+  const serverUrl = 'http://localhost:3001/'
 
   const addRemoveLike  = async() => {
     const response = await fetch( serverUrl + `p/${postId}/likes`,{
